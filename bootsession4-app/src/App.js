@@ -3,26 +3,41 @@ import {Massage} from './Massage.js';
 import './App.css';
 
 function App() {
-  let [count , setCount] = useState (1)
-  let [isMorning , setMorning] = useState(true);
+  const [count, setCount] = useState(1);
+  const [isMorning, setMorning] = useState(false);
+  const [temp, setTemp] = useState(22);
 
   return (
-     <div className = "box">
-
-      <h1>day time is = {isMorning ? 'Morning' : 'Night'} </h1>
-
-      <Massage counter={count}/> 
-
-      <br />
-      <button  onClick = {() => setCount (count + 1) }>  update counter </button>
-      <br />
-
-      <button  onClick = {() => setMorning (!isMorning) }>  update day </button>
-
-
-
-    </div>
+    <div className= {`box ${isMorning ? 'dayLight': ''}`}>
+      <h2>The count is {count} </h2>
+      <br />  
+      <button onClick= {
+        ()=> setCount (count + 1)
+      }>
+        Update count
+      </button>
+    <h1> Good {isMorning ? 'Morning' : 'Night'}</h1>
+    <br />
+    <button onClick = {
+      () => setMorning(!isMorning)
+    }>
+      Change time
+    </button>
+    <h3> The room temperature is {temp}&#8451</h3>
+    <br />
+    <button onClick = {
+      ()=> setTemp(temp + 1)
+    }>
+      Increase temperature
+    </button>
+    <button onClick = {
+      ()=> setTemp(temp - 1)
+    }>
+      Decrease temperature
+    </button>
+      </div>
   );
 }
+
 
 export default App;
